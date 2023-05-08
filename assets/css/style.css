@@ -23,14 +23,73 @@ html {
 4. Kiểu dáng (kiểu chữ, hình tròn, hình vuông,...)
 */
 
-.clear {
-  clear: both;
-}
-
+/* Common */
 .text-white {
   color: #fff !important;
 }
 
+.row {
+  margin-left: -8px;
+  margin-right: -8px;
+}
+
+.row::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.col {
+  float: left;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.col-half {
+  width: 50%;
+}
+
+.col-third {
+  width: 33.33333%;
+}
+
+.col-full {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.mt-8 {
+  margin-top: 8px !important;
+}
+
+.mt-16 {
+  margin-top: 16px !important;
+}
+
+.btn {
+  color: #fff;
+  background-color: #000;
+  text-decoration: none;
+  padding: 11px 16px;
+  display: inline-block;
+  margin-top: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  color: #000;
+  background-color: #ccc;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+/* Main */
 #main {
 }
 
@@ -127,10 +186,9 @@ html {
   background-position: top center;
   background-size: cover;
   position: relative;
-  
 }
 
-#slider .text-content{
+#slider .text-content {
   position: absolute;
   bottom: 47px;
   /* left: 50%;
@@ -157,7 +215,7 @@ html {
   width: 800px;
   margin-left: auto;
   margin-right: auto;
-  padding: 64px 0;
+  padding: 64px 0 112px;
 }
 
 #content .section-heading {
@@ -184,12 +242,6 @@ html {
   font-size: 15px;
   text-align: justify;
   line-height: 1.4;
-}
-
-#content .member-item {
-  float: left;
-  width: 33.33333%;
-  text-align: center;
 }
 
 #content .member-name {
@@ -239,14 +291,7 @@ html {
 }
 
 .places-list {
-  margin: 32px -8px 0;
-  padding-bottom: 48px;
-}
-
-.place-item {
-  float: left;
-  width: 33.3333%;
-  padding: 0 8px;
+  margin-top: 32px;
 }
 
 .place-img {
@@ -279,23 +324,63 @@ html {
   line-height: 1.4;
 }
 
-.place-buy-btn {
-  color: #fff;
-  background-color: #000;
-  text-decoration: none;
-  padding: 11px 16px;
-  display: inline-block;
-  margin-top: 15px;
+.contact-content {
+  margin-top: 48px;
 }
 
-.place-buy-btn:hover {
-  color: #000;
-  background-color: #ccc;
+.contact-info {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.contact-info i[class*="ti-"] {
+  width: 30px;
+  display: inline-block;
+}
+
+.contact-form {
+  font-size: 15px;
+}
+
+.contact-form .form-control {
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+  outline-color: #2196f3;
+}
+
+.map-section img {
+  width: 100%;
 }
 
 #footer {
+  padding: 64px 16px;
+  text-align: center;
 }
 
+#footer .socials-list {
+  font-size: 24px;
+}
+
+#footer .socials-list a {
+  color: rgba(0, 0, 0, 0.6);
+  text-decoration: none;
+}
+#footer .copyright a:hover,
+#footer .socials-list a:hover {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+#footer .copyright {
+  margin-top: 15px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+#footer .copyright a {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Modal */
 .modal {
   display: none;
   align-items: center;
@@ -318,7 +403,8 @@ html {
   max-width: calc(100% - 32px);
   min-height: 200px;
   position: relative;
-} 
+  animation: modalFadeIn ease 0.6s;
+}
 
 .modal-close {
   position: absolute;
@@ -387,9 +473,17 @@ html {
 }
 
 .modal-footer a {
-  color: #2196F3;
+  color: #2196f3;
 }
 
-.modal-help {
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-140px);
+  }
 
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
