@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The band</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/response.css" />
     <link
       rel="stylesheet"
       href="./assets/fonts/themify-icons/themify-icons.css"
@@ -20,7 +21,7 @@
           <li><a href="#tour">Tour</a></li>
           <li><a href="#contact">Contact</a></li>
           <li>
-            <a href=""> More <i class="nav-arrow-down ti-angle-down"></i> </a>
+            <a href="#"> More <i class="nav-arrow-down ti-angle-down"></i> </a>
             <ul class="subnav">
               <li><a href="#">Merchandise</a></li>
               <li><a href="#">Extras</a></li>
@@ -30,6 +31,9 @@
         </ul>
         <div class="search-btn">
           <i class="search-icon ti-search"></i>
+        </div>
+        <div id="mobile-menu" class="mobile-menu-btn">
+          <i class="menu-icon ti-menu"></i>
         </div>
       </div>
 
@@ -250,6 +254,31 @@
     </div>
 
     <script>
+      var header = document.getElementById("header");
+      var mobileMenu = document.getElementById("mobile-menu");
+      var headerHeight = header.clientHeight;
+
+      //Đóng mở mobile menu
+      mobileMenu.onclick = function () {
+        var isClosed = header.clientHeight === headerHeight;
+        if (isClosed) {
+          header.style.height = "auto";
+        } else {
+          header.style.height = "46px";
+        }
+      };
+
+      //Tự động đóng khi chọn menu
+      var menuItems = document.querySelectorAll('#nav li a[href*="#"]');
+      for (var i = 0; i < menuItems.length; i++) {
+        var menuItem = menuItems[i];
+        menuItem.onclick = function () {
+          header.style.height = "46px";
+        };
+      }
+    </script>
+
+    <script>
       const buyBtns = document.querySelectorAll(".js-buy-ticket");
       const modal = document.querySelector(".js-modal");
       const modalContainer = document.querySelector(".js-modal-container");
@@ -258,19 +287,14 @@
       function showBuyTickets() {
         modal.classList.add("open");
       }
-
       function hideBuyTickets() {
         modal.classList.remove("open");
       }
-
       for (const buyBtn of buyBtns) {
         buyBtn.addEventListener("click", showBuyTickets);
       }
-
       modalClose.addEventListener("click", hideBuyTickets);
-
       modal.addEventListener("click", hideBuyTickets);
-
       modalContainer.addEventListener("click", function (event) {
         event.stopPropagation(); //ngừng việc nổi bọt
       });
